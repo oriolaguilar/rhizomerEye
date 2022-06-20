@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { Routes, RouterModule, UrlSegment } from '@angular/router';
 import { LoggedInGuard } from './login-basic/loggedin.guard';
 import { AdministratorGuard } from './login-basic/administrator.guard';
@@ -17,6 +17,7 @@ import { WordCloudComponent } from './class/word-cloud/word-cloud.component';
 import { NetworkComponent } from './class/network/network.component';
 import { ResourceComponent } from './resource/resource.component';
 import { LoginFormComponent } from './login-basic/login-form.component';
+import { ChartRepresentationComponent } from './facet/chart-representation/chart-representation.component';
 
 const routes: Routes = [
   { path: 'datasets/new', component: CreateDatasetComponent, canActivate: [LoggedInGuard] },
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'datasets/:did/:cid/edit-resource', loadChildren: () =>
       import('./resource/edit-resource/edit-resource.module').then(m => m.EditResourceModule) },
   { path: 'datasets/:did/:cid', component: ListFacetComponent },
+  { path: 'datasets/:did/:cid/:chart', component: ListFacetComponent },
   { path: 'datasets/:did', component: WordCloudComponent },
   { path: 'datasets', component: ListDatasetComponent, canActivate: [LoggedInGuard] },
   { path: 'users/new', component: UserCreateComponent, canActivate: [AdministratorGuard] },

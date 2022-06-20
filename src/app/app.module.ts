@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { NgbCollapseModule, NgbDropdownModule, NgbModalModule, NgbNavModule, NgbPaginationModule, NgbTypeaheadModule
 } from '@ng-bootstrap/ng-bootstrap';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -45,6 +45,9 @@ import { ResourceComponent } from './resource/resource.component';
 import { DetailIncomingFacetComponent } from './facet/detail-incoming-facet/detail-incoming-facet.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { ChartRepresentationComponent } from './facet/chart-representation/chart-representation.component';
+import { GoogleChartsModule } from 'angular-google-charts';
+
 
 @NgModule({
   declarations: [
@@ -70,7 +73,8 @@ import { environment } from '../environments/environment';
     NetworkComponent,
     DatasetFormModalComponent,
     ResourceComponent,
-    DetailIncomingFacetComponent
+    DetailIncomingFacetComponent,
+    ChartRepresentationComponent
   ],
   imports: [
     AppRoutingModule,
@@ -87,6 +91,7 @@ import { environment } from '../environments/environment';
     LoginBasicModule,
     ErrorHandlerModule,
     DescriptionModule,
+    GoogleChartsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
@@ -95,6 +100,7 @@ import { environment } from '../environments/environment';
     AuthenticationBasicService, LoggedInGuard, AdministratorGuard, AdminService, UserService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [DatasetFormModalComponent]
+  entryComponents: [DatasetFormModalComponent],
+  schemas: [NO_ERRORS_SCHEMA]
 })
 export class AppModule { }
